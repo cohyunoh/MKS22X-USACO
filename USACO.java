@@ -4,7 +4,20 @@ import java.util.Scanner;
 
 
 public class USACO{
-  public static int bronze(String filename){
+  public static int bronze(String filename) throws FileNotFoundException{
+    File fileIn = new File(filename);
+    Scanner in = new Scanner(fileIn);
+    int rows = Integer.parseInt(in.next());
+    int cols = Integer.parseInt(in.next());
+    int elevation = Integer.parseInt(in.next());
+    int stompnum = Integer.parseInt(in.next());
+    int[][] pasture = new int[rows][cols];
+    for(int r = 0; r < rows; r++){
+      for(int c = 0; c < cols; c++){
+        pasture[r][c] = Integer.parseInt(in.next());
+      }
+    }
+    
     return 0;
   }
   private static void stomp(int row, int col, int number, int[][] pasture){
