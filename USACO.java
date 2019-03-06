@@ -17,7 +17,17 @@ public class USACO{
         pasture[r][c] = Integer.parseInt(in.next());
       }
     }
-    
+    for(int i = 0; i < stompnum; i++){
+      int row = Integer.parseInt(in.next());
+      int col = Integer.parseInt(in.next());
+      int numberStomp = Integer.parseInt(in.next());
+      stomp(row,col,numberStomp,pasture);
+    }
+    for(int r = 0; r < rows; r++){
+      for(int c = 0; c < cols; c++){
+        int newElev = pasture[r][c] - elevation;
+      }
+    }
     return 0;
   }
   private static void stomp(int row, int col, int number, int[][] pasture){
