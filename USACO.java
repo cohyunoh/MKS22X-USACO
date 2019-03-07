@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 
 public class USACO{
+  public static void main(String[] args) {
+    try{
+      System.out.println(bronze("example.txt"));
+    }catch(FileNotFoundException e){
+      e.printStackTrace();
+    }
+  }
   public static int bronze(String filename) throws FileNotFoundException{
     File fileIn = new File(filename);
     Scanner in = new Scanner(fileIn);
@@ -26,9 +33,20 @@ public class USACO{
     for(int r = 0; r < rows; r++){
       for(int c = 0; c < cols; c++){
         int newElev = pasture[r][c] - elevation;
+        if(newElev > 0){
+          pasture[r][c] = 0;
+        }else{
+          pasture[r][c] = Math.abs(newElev);
+        }
       }
     }
-    return 0;
+    int height = 0;
+    for(int r = 0; r < rows; r++){
+      for(int c = 0; c < cols; c++){
+        height += pasture[r][c];
+      }
+    }
+    return 72 * 72 * height;
   }
   private static void stomp(int row, int col, int number, int[][] pasture){
     int greatest = findGreatest(row,col,pasture);
