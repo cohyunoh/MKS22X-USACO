@@ -29,7 +29,7 @@ public class USACO{
       int col = Integer.parseInt(in.next()) - 1;
       int numberStomp = Integer.parseInt(in.next());
       stomp(row,col,numberStomp,pasture);
-      System.out.println(stringPasture(pasture));
+      //System.out.println(stringPasture(pasture));
     }
     for(int r = 0; r < rows; r++){
       for(int c = 0; c < cols; c++){
@@ -47,7 +47,7 @@ public class USACO{
         height += pasture[r][c];
       }
     }
-    System.out.println(stringPasture(pasture));
+    //System.out.println(stringPasture(pasture));
     return 72 * 72 * height;
   }
   private static void stomp(int row, int col, int number, int[][] pasture){
