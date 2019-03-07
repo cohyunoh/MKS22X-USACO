@@ -25,10 +25,11 @@ public class USACO{
       }
     }
     for(int i = 0; i < stompnum; i++){
-      int row = Integer.parseInt(in.next());
-      int col = Integer.parseInt(in.next());
+      int row = Integer.parseInt(in.next()) - 1;
+      int col = Integer.parseInt(in.next()) - 1;
       int numberStomp = Integer.parseInt(in.next());
       stomp(row,col,numberStomp,pasture);
+      System.out.println(stringPasture(pasture));
     }
     for(int r = 0; r < rows; r++){
       for(int c = 0; c < cols; c++){
