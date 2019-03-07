@@ -46,6 +46,7 @@ public class USACO{
         height += pasture[r][c];
       }
     }
+    System.out.println(stringPasture(pasture));
     return 72 * 72 * height;
   }
   private static void stomp(int row, int col, int number, int[][] pasture){
@@ -75,5 +76,23 @@ public class USACO{
       }
     }
     return greatest;
+  }
+  private static String stringPasture(int[][] pasture){
+    int rows = pasture.length;
+    int cols = pasture[0].length;
+    String ans = "";
+    for(int r = 0; r < rows; r++){
+      String line = "";
+      for(int c = 0; c < cols; c++){
+        if(pasture[r][c] == 0){
+          line += "-- ";
+        }else{
+          line += " " + pasture[r][c] + " ";
+        }
+      }
+      line += "\n";
+      ans += line;
+    }
+    return ans;
   }
 }
