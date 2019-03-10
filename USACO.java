@@ -74,42 +74,14 @@ public class USACO{
     int endC = Integer.parseInt(in.next()) - 1;
     int[][] movePasture = new int[rows][cols];
     movePasture[startR][startC] = 1;
-    movePasture = iteration(time, movePasture);
     for(int r = 0; r < rows; r++){
       for(int c = 0; c < cols; c++){
         if(pasture[r][c].equals("*")){
-          movePasture[r][c] = 0;
-          if(r + 1 < pasture.length){
-            if(movePasture[r + 1][c] - 1 < 0){
-              movePasture[r + 1][c] = 0;
-            }else{
-              movePasture[r + 1][c] --;
-            }
-          }
-          if(r - 1 >=0){
-            if(movePasture[r - 1][c] - 1 < 0){
-              movePasture[r - 1][c] = 0;
-            }else{
-              movePasture[r - 1][c] --;
-            }
-          }
-          if(c + 1 < pasture[0].length){
-            if(movePasture[r][c + 1] - 1 < 0){
-              movePasture[r][c + 1] = 0;
-            }else{
-              movePasture[r][c + 1] --;
-            }
-          }
-          if(c - 1 >=0){
-            if(movePasture[r][c - 1] - 1 < 0){
-              movePasture[r][c - 1] = 0;
-            }else{
-              movePasture[r][c - 1] --;
-            }
-          }
+          movePasture[r][c] = -1;
         }
       }
     }
+    movePasture = iteration(time, movePasture, pasture);
     return movePasture[endR][endC];
   }
 
@@ -160,7 +132,7 @@ public class USACO{
     return ans;
   }
 
-  private static int[][] iteration(int i, int[][] pasture){
+  private static int[][] iteration(int i, int[][] pasture, String[][] plane){
     if(i == 0){
       //System.out.println(0);
       //System.out.println(stringPasture(pasture));
@@ -171,26 +143,35 @@ public class USACO{
       int[][] newPasture = new int[pasture.length][pasture[0].length];
       for(int r = 0; r < pasture.length; r++){
         for(int c = 0; c < pasture[0].length; c++){
-          if(pasture[r][c] != 0){
+          if(pasture[r][c] != 0 && !plane[r][c].equals("*")){
             if(r + 1 < pasture.length){
-              newPasture[r + 1][c] += pasture[r][c];
+              if(!plane[r + 1][c].equals("*")){
+                newPasture[r + 1][c] += pasture[r][c];
+              }
             }
             if(r - 1 >=0){
-              newPasture[r - 1][c] += pasture[r][c];
+              if(!plane[r - 1][c].equals("*")){
+                newPasture[r - 1][c] += pasture[r][c];
+              }
             }
             if(c + 1 < pasture[0].length){
-              newPasture[r][c + 1] += pasture[r][c];
+              if(!plane[r][c + 1].equals("*")){
+                newPasture[r][c + 1] += pasture[r][c];
+              }
+
             }
             if(c - 1 >=0){
-              newPasture[r][c - 1] += pasture[r][c];
+              if(!plane[r][c - 1].equals("*")){
+                newPasture[r][c - 1] += pasture[r][c];
+              }
             }
           }
         }
       }
       pasture = newPasture;
-      System.out.println(moves);
+      //System.out.println(moves);
       moves ++;
-      System.out.println(stringPasture(pasture));
+      //System.out.println(stringPasture(pasture));
     }
     return pasture;
   }
