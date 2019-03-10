@@ -73,8 +73,42 @@ public class USACO{
     int[][] movePasture = new int[rows][cols];
     movePasture[startR][startC] = 1;
     movePasture = iteration(time, movePasture);
-
-    return 0;
+    for(int r = 0; r < rows; r++){
+      for(int c = 0; c < cols; c++){
+        if(pasture[r][c].equals("*")){
+          movePasture[r][c] = 0;
+          if(r + 1 < pasture.length){
+            if(movePasture[r + 1][c] - 1 < 0){
+              movePasture[r + 1][c] = 0;
+            }else{
+              movePasture[r + 1][c] --;
+            }
+          }
+          if(r - 1 >=0){
+            if(movePasture[r - 1][c] - 1 < 0){
+              movePasture[r - 1][c] = 0;
+            }else{
+              movePasture[r - 1][c] --;
+            }
+          }
+          if(c + 1 < pasture[0].length){
+            if(movePasture[r][c + 1] - 1 < 0){
+              movePasture[r][c + 1] = 0;
+            }else{
+              movePasture[r][c + 1] --;
+            }
+          }
+          if(c - 1 >=0){
+            if(movePasture[r][c - 1] - 1 < 0){
+              movePasture[r][c - 1] = 0;
+            }else{
+              movePasture[r][c - 1] --;
+            }
+          }
+        }
+      }
+    }
+    return movePasture[endR][endC];
   }
 
   private static void stomp(int row, int col, int number, int[][] pasture){
