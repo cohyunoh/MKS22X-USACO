@@ -7,12 +7,13 @@ public class USACO{
   public static void main(String[] args) {
     try{
       System.out.println(bronze("example.txt"));
+      System.out.println(silver("example1.txt"));
     }catch(FileNotFoundException e){
       e.printStackTrace();
     }
-    int[][] p = new int[5][5];
-    p[2][2] = 1;
-    System.out.println(iteration(0, p));
+    //int[][] p = new int[5][5];
+    //p[2][2] = 1;
+    //System.out.println(iteration(0, p));
   }
   public static int bronze(String filename) throws FileNotFoundException{
     File fileIn = new File(filename);
