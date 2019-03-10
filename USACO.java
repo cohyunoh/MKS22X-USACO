@@ -12,7 +12,7 @@ public class USACO{
     }
     int[][] p = new int[5][5];
     p[2][2] = 1;
-    System.out.println(iteration(2, p));
+    System.out.println(iteration(0, p));
   }
   public static int bronze(String filename) throws FileNotFoundException{
     File fileIn = new File(filename);
@@ -66,6 +66,15 @@ public class USACO{
         pasture[r][c] = in.next();
       }
     }
+    int startR = Integer.parseInt(in.next());
+    int startC = Integer.parseInt(in.next());
+    int endR = Integer.parseInt(in.next());
+    int endC = Integer.parseInt(in.next());
+    int[][] movePasture = new int[rows][cols];
+    movePasture[startR][startC] = 1;
+    movePasture = iteration(time, movePasture);
+
+    return 0;
   }
 
   private static void stomp(int row, int col, int number, int[][] pasture){
@@ -116,10 +125,12 @@ public class USACO{
   }
 
   private static int[][] iteration(int i, int[][] pasture){
-    int moves = 0;
-    if(moves == i){
+    if(i == 0){
+      //System.out.println(0);
+      //System.out.println(stringPasture(pasture));
       return pasture;
     }
+    int moves = 1;
     while (moves <= i){
       int[][] newPasture = new int[pasture.length][pasture[0].length];
       for(int r = 0; r < pasture.length; r++){
@@ -141,8 +152,9 @@ public class USACO{
         }
       }
       pasture = newPasture;
+      //System.out.println(moves);
       moves ++;
-      System.out.println(stringPasture(pasture));
+      //System.out.println(stringPasture(pasture));
     }
     return pasture;
   }
