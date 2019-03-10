@@ -53,6 +53,21 @@ public class USACO{
     //System.out.println(stringPasture(pasture));
     return 72 * 72 * height;
   }
+
+  public static int silver(String filename) throws FileNotFoundException{
+    File fileIn = new File(filename);
+    Scanner in = new Scanner(fileIn);
+    int rows = Integer.parseInt(in.next());
+    int cols = Integer.parseInt(in.next());
+    int time = Integer.parseInt(in.next());
+    String[][] pasture = new String[rows][cols];
+    for(int r = 0; r < rows; r++){
+      for(int c = 0; c < cols; c++){
+        pasture[r][c] = in.next();
+      }
+    }
+  }
+
   private static void stomp(int row, int col, int number, int[][] pasture){
     int greatest = findGreatest(row,col,pasture);
     for(int i = 0; i < number; i++){
