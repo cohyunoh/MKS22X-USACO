@@ -63,14 +63,15 @@ public class USACO{
     int time = Integer.parseInt(in.next());
     String[][] pasture = new String[rows][cols];
     for(int r = 0; r < rows; r++){
+      String line = in.next();
       for(int c = 0; c < cols; c++){
-        pasture[r][c] = in.next();
+        pasture[r][c] = line.charAt(c) + "";
       }
     }
-    int startR = Integer.parseInt(in.next());
-    int startC = Integer.parseInt(in.next());
-    int endR = Integer.parseInt(in.next());
-    int endC = Integer.parseInt(in.next());
+    int startR = Integer.parseInt(in.next()) - 1;
+    int startC = Integer.parseInt(in.next()) - 1;
+    int endR = Integer.parseInt(in.next()) - 1;
+    int endC = Integer.parseInt(in.next()) - 1;
     int[][] movePasture = new int[rows][cols];
     movePasture[startR][startC] = 1;
     movePasture = iteration(time, movePasture);
