@@ -10,6 +10,9 @@ public class USACO{
     }catch(FileNotFoundException e){
       e.printStackTrace();
     }
+    int[][] p = new int[5][5];
+    p[2][2] = 1;
+    System.out.println(iteration(2, p));
   }
   public static int bronze(String filename) throws FileNotFoundException{
     File fileIn = new File(filename);
@@ -97,7 +100,34 @@ public class USACO{
     return ans;
   }
 
-  
+  private static int[][] iteration(int i, int[][] pasture){
+    int moves = 0;
+    while (moves <= i){
+      int[][] newPasture = new int[pasture.length][pasture[0].length];
+      for(int r = 0; r < pasture.length; r++){
+        for(int c = 0; c < pasture[0].length; c++){
+          if(pasture[r][c] != 0){
+            if(r + 1 < pasture.length){
+              newPasture[r + 1][c] += pasture[r][c];
+            }
+            if(r - 1 >=0){
+              newPasture[r - 1][c] += pasture[r][c];
+            }
+            if(c + 1 < pasture[0].length){
+              newPasture[r][c + 1] += pasture[r][c];
+            }
+            if(c - 1 >=0){
+              newPasture[r][c - 1] += pasture[r][c];
+            }
+          }
+        }
+      }
+      pasture = newPasture;
+      moves ++;
+      System.out.println(stringPasture(pasture));
+    }
+    return pasture;
+  }
 
 
 }
