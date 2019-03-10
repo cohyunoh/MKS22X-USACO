@@ -102,6 +102,9 @@ public class USACO{
 
   private static int[][] iteration(int i, int[][] pasture){
     int moves = 0;
+    if(moves == i){
+      return pasture;
+    }
     while (moves <= i){
       int[][] newPasture = new int[pasture.length][pasture[0].length];
       for(int r = 0; r < pasture.length; r++){
