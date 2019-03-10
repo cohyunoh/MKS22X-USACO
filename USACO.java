@@ -57,6 +57,7 @@ public class USACO{
 
   public static int silver(String filename) throws FileNotFoundException{
     File fileIn = new File(filename);
+    //System.out.println(filename);
     Scanner in = new Scanner(fileIn);
     int rows = Integer.parseInt(in.next());
     int cols = Integer.parseInt(in.next());
@@ -64,6 +65,7 @@ public class USACO{
     String[][] pasture = new String[rows][cols];
     for(int r = 0; r < rows; r++){
       String line = in.next();
+      //System.out.println(line);
       for(int c = 0; c < cols; c++){
         pasture[r][c] = line.charAt(c) + "";
       }
