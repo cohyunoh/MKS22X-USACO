@@ -188,9 +188,9 @@ public class USACO{
         }
       }
       pasture = newPasture;
-      //System.out.println(moves);
+      System.out.println(moves);
       moves ++;
-      //System.out.println(stringPasture(pasture));
+      System.out.println(stringPasture(pasture));
     }
     return pasture;
   }
